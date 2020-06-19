@@ -47,7 +47,7 @@ export default {
   data(){
     return {
         taskList: [{'title': "xxx"}],
-        baseUrl: 'http://127.0.0.1:8000/api/todo_mvc/task/',
+        baseUrl: 'http://120.79.87.64:9999/api/todo_mvc/task/',
         title: "",
         status: 2,
         completedTaskList: []
