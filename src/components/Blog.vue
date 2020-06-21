@@ -6,6 +6,8 @@
         </a>
       </ul>
   </div>
+
+ 
 </template>
 
 <script>
@@ -20,7 +22,7 @@ export default {
             {'title': '第一篇文章', id: 1},
             {'title': '第二篇文章', id: 2}
         ],
-        baseUrl: 'http://127.0.0.1:8000/api/blog/'
+        baseUrl: 'http://127.0.0.1:8000/api/blog/article/'
       }
   },
   methods: {
@@ -36,9 +38,12 @@ export default {
       },
 
       articleUrl(articleId){
-          return `/acticle/${articleId}`
+          return `/article/${articleId}`
       }
   },
 
+  beforeMount(){
+      this.getBlogList()
+  }
 }
 </script>

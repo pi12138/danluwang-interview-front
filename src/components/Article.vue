@@ -1,33 +1,56 @@
 <template>
   <div class="container">
-      <h1>This is a Article</h1>
-      <h2>{{ this.$route.params.id }}</h2>
+      <div id="article">
+        
+        <div v-html="compiledMarkdown" class="text-left"></div>
+      </div>
+
+      <div id="">
+
+      </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
+import marked from 'marked'
 
 export default {
   name: 'Article',
   data(){
       return {
-        blogList: [],
-        baseUrl: 'http://127.0.0.1:8000/api/blog/'
+        id: 0,
+        title: '',
+        create_time: '',
+        content: '',
+        baseUrl: 'http://127.0.0.1:8000/api/blog/article/'
       }
   },
   methods: {
-      getBlogList(){
-          let url = this.baseUrl
+      getArticle(){
+          let url = `${this.baseUrl}${this.$route.params.id}`
 
           this.$axios.get(url)
           .then((result) => {
-              this.blogList = result.data
+              let data = result.data
+              this.id = data.id
+              this.title = data.title
+              this.create_time = data.create_time
+              this.content = data.content
           }).catch((err) => {
               console.log(err.response)
           });
       }
+  },
+  computed: {
+    compiledMarkdown: function() {
+    return marked(this.content);
+    },
+  },
+
+  beforeMount(){
+      this.getArticle()
   }
 }
 </script>
