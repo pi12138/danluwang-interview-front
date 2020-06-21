@@ -3,7 +3,7 @@
       <form @submit.prevent>
           <div class="row">
             <div class="form-group col-md-6 offset-md-3">
-                <input type="text" class="form-control" v-on:keyup.enter="addTask" v-model="title">
+                <input type="text" class="form-control" v-on:keyup.enter="addTask" v-model="title" maxlength="30">
             </div>
           </div>
       </form>
@@ -11,7 +11,7 @@
       <ul class="list-group col-md-6 offset-md-3">
         <li class="list-group-item" v-for="(item, index) in taskList" :key="index" v-show="status==2 || item.status==status">
           <div class="row">
-            <div v-text="item.title" class="col-md-7"></div>
+            <div v-text="item.title" class="col-md-7 text-left"></div>
             <button class="col-md-2 btn btn-primary btn-sm" v-text="btnInfo(item.status)" @click="alterTaskStatus(item)"></button>
             <button class="col-md-2 offset-md-1 btn btn-secondary btn-sm" @click="deleteTask(index)">delete</button>
           </div>
