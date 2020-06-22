@@ -5,9 +5,7 @@
         <div v-html="compiledMarkdown" class="text-left"></div>
       </div>
 
-      <div id="">
-
-      </div>
+      <Comment></Comment>
   </div>
 </template>
 
@@ -15,6 +13,7 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import marked from 'marked'
+import Comment from '../components/Comment.vue'
 
 export default {
   name: 'Article',
@@ -26,6 +25,9 @@ export default {
         content: '',
         baseUrl: 'http://127.0.0.1:8000/api/blog/article/'
       }
+  },
+  components: {
+    Comment
   },
   methods: {
       getArticle(){
