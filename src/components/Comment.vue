@@ -16,11 +16,14 @@
           </form>
       </div>
 
+      <hr>
+      
       <div id="commentList">
         <h4>评论列表</h4>
         <ul class="list-group list-group-flush">
             <li class="list-group-item text-left" v-for="(item, index) in commentList" :key="index">
-                <div v-text="item.content"></div> 
+                <h4 v-text="item.content"></h4> 
+                <div class="float-right text-primary" v-text="userInfo(item)"></div>
             </li>
         </ul>
       </div>
@@ -51,8 +54,11 @@ export default {
       getCommentList(){
         //   获取评论列表
           let url = this.baseUrl
+          let params = {
+              articleId : this.articleId
+          }
 
-          this.$axios.get(url, {articleId: this.articleId})
+          this.$axios.get(url, {params: params})
           .then((result) => {
               this.commentList = result.data
           }).catch((err) => {
@@ -65,16 +71,25 @@ export default {
         let url = this.baseUrl
         let data = {
             'email': this.email,
-            'content': this.content
+            'content': this.content,
+            'article': this.articleId
         }
 
-        this.$axios.post(url, {data})
+        this.$axios.post(url, data)
         .then((result) => {
-            this.commentList.push(result.data)
+            this.commentList.unshift(result.data)
         }).catch((err) => {
             console.log(err.response)
         });
         
+      },
+
+      userInfo(item){
+          if (item.email == ""){
+              return `评论人: ${item.user_address} 评论时间: ${item.create_time}`
+          }else{
+              return `评论人: ${item.email} 评论时间: ${item.create_time}`
+          }
       }
   },
   computed: {
