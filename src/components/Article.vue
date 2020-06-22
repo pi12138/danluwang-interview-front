@@ -23,7 +23,7 @@ export default {
         title: '',
         create_time: '',
         content: '',
-        baseUrl: 'http://127.0.0.1:9999/api/blog/article/'
+        baseUrl: 'http://120.79.87.64:9999/api/blog/article/'
       }
   },
   components: {
