@@ -39,7 +39,7 @@ export default {
   name: 'Comment',
   data(){
       return {
-        baseUrl: 'http://127.0.0.1:8000/api/blog/comment/',
+        baseUrl: 'http://127.0.0.1:9999/api/blog/comment/',
         commentList: [
             {'user_address': '上海', 'email': '1558255789@qq.com', 'content': '写的还行'},
             {'user_address': '上海', 'email': '1558255789@qq.com', 'content': '写的还不错'}
