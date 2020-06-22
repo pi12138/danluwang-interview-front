@@ -41,8 +41,8 @@ export default {
       return {
         baseUrl: 'http://120.79.87.64:9999/api/blog/comment/',
         commentList: [
-            {'user_address': '上海', 'email': '1558255789@qq.com', 'content': '写的还行'},
-            {'user_address': '上海', 'email': '1558255789@qq.com', 'content': '写的还不错'}
+            // {'user_address': '上海', 'email': '1558255789@qq.com', 'content': '写的还行'},
+            // {'user_address': '上海', 'email': '1558255789@qq.com', 'content': '写的还不错'}
         ],
 
         email: '',

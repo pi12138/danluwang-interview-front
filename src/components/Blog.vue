@@ -1,10 +1,10 @@
 <template>
   <div class="container">
       <ul class="list-group list-group-flush col-md-10 offset-md-1">
-        <a class="list-group-item" v-for="(item, index) in blogList" :key="index" :href="articleUrl(item.id)">
+        <router-link class="list-group-item" v-for="(item, index) in blogList" :key="index" :to="articleUrl(item.id)">
             <div v-text="item.title" class="text-left float-left"></div>
             <div v-text="item.create_time" class="float-right text-dark"></div>
-        </a>
+        </router-link>
       </ul>
   </div>
 
@@ -20,8 +20,8 @@ export default {
   data(){
       return {
         blogList: [
-            {'title': '第一篇文章', id: 1},
-            {'title': '第二篇文章', id: 2}
+            // {'title': '第一篇文章', id: 1},
+            // {'title': '第二篇文章', id: 2}
         ],
         baseUrl: 'http://120.79.87.64:9999/api/blog/article/'
       }
