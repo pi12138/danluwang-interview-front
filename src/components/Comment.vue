@@ -68,6 +68,11 @@ export default {
 
       createComment(){
         // 创建评论
+        if (!this.checkEmail()){
+            alert("邮箱输入不正确！")
+            return
+        }
+
         let url = this.baseUrl
         let data = {
             'email': this.email,
@@ -82,6 +87,11 @@ export default {
             console.log(err.response)
         });
         
+      },
+
+      checkEmail(){
+        let pattern = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+        return pattern.test(this.email)
       },
 
       userInfo(item){
